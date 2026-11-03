@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Pac-Man tests</title>
+  <link rel="stylesheet" href="../css/style.css">
+  <style>
+    html, body { height: auto; }
+    body { display: block; padding: 1rem 16px; background: #eef2f5; color: #1d2b36; }
+    h1 { font-size: 1.2rem; margin: 0 0 0.5rem; }
+    #summary { padding: 0.6rem 0.9rem; border-radius: 4px; font-weight: 600; color: #fff; background: #5f6f7c; }
+    #summary.pass { background: #3aa76d; }
+    #summary.fail { background: #e8573f; }
+    ul { list-style: none; padding: 0; font-family: ui-monospace, monospace; font-size: 0.9rem; }
+    li { padding: 0.15rem 0; }
+    li.fail { color: #c2412b; font-weight: 600; }
+    li.info { color: #5f6f7c; }
+    /* The game's page parts, for the wiring tests. Kept off screen. */
+    #under-test { position: absolute; left: -9999px; top: 0; width: 224px; }
+    #under-test .stage { width: 224px; height: 248px; flex: none; }
+  </style>
+</head>
+<body>
+  <h1>Pac-Man tests</h1>
+  <p id="summary">Running…</p>
+  <ul id="results"></ul>
+
+  <div id="under-test">
+    <button type="button" id="sound">Sound on</button>
+    <button type="button" id="new-game">New game</button>
+    <div id="scoreline">
+      <b id="score"></b><b id="high"></b><b id="level"></b><span id="lives"></span>
+    </div>
+    <div id="stage" class="stage"><canvas id="game"></canvas></div>
+    <p id="status"></p>
+  </div>
+
+  <script src="../js/rules.js"></script>
+  <script src="../js/ai.js"></script>
+  <script src="../js/game.js"></script>
+  <script src="../js/render.js"></script>
+  <script src="../js/sound.js"></script>
+  <script src="../js/ui.js"></script>
+  <script src="bot.js"></script>
+  <script src="tests.js"></script>
+</body>
+</html>

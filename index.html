@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Pac-Man</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header class="topbar">
+    <h1>Pac-Man</h1>
+    <div class="controls">
+      <button type="button" id="sound">Sound on</button>
+      <button type="button" id="new-game">New game</button>
+    </div>
+  </header>
+
+  <main>
+    <div id="scoreline" class="scoreline">
+      <span>Score <b id="score">0</b></span>
+      <span>High <b id="high">0</b></span>
+      <span>Level <b id="level">1</b></span>
+      <span id="lives" class="lives"></span>
+    </div>
+
+    <div id="stage" class="stage">
+      <canvas id="game" width="224" height="248">Pac-Man needs a browser with canvas support.</canvas>
+    </div>
+
+    <p id="status" class="status" role="status" aria-live="polite"></p>
+  </main>
+
+  <script src="js/rules.js"></script>
+  <script src="js/ai.js"></script>
+  <script src="js/game.js"></script>
+  <script src="js/render.js"></script>
+  <script src="js/sound.js"></script>
+  <script src="js/ui.js"></script>
+  <script>PM.ui.start();</script>
+</body>
+</html>

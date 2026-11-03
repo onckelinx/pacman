@@ -1,0 +1,177 @@
+/* Pac-Man — flat design. Solid fills only: no gradients, no drop shadows. */
+
+:root {
+  --bg: #eef2f5;
+  --surface: #ffffff;
+  --text: #1d2b36;
+  --muted: #5f6f7c;
+  --header-bg: #1d3a52;
+  --header-text: #ffffff;
+  --btn: #dde5ec;
+  --btn-hover: #cdd8e2;
+  --focus: #f2b134;
+
+  /* The playfield stays dark in both themes. js/render.js reads these for the canvas. */
+  --maze-bg: #05070f;
+  --wall: #2441c4;
+  --wall-flash: #e8edf7;
+  --door: #f5a6c8;
+  --dot: #f5d9b8;
+  --pac: #ffd51f;
+  --blinky: #f0413b;
+  --pinky: #f7a1cf;
+  --inky: #34d5e6;
+  --clyde: #f59a35;
+  --fright: #2a3bdb;
+  --fright-face: #f5d9b8;
+  --fright-flash: #e8edf7;
+  --fright-flash-face: #f0413b;
+  --eye: #ffffff;
+  --pupil: #1b2aa8;
+  --ready: #ffd51f;
+  --over: #f0413b;
+  --popup: #34d5e6;
+  --panel: #1d3a52;
+  --panel-text: #ffffff;
+  --fruit-red: #e8413b;
+  --fruit-green: #3aa76d;
+  --fruit-orange: #f59a35;
+  --fruit-yellow: #ffd51f;
+  --fruit-white: #e8edf7;
+
+  color-scheme: light;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #0f1a24;
+    --surface: #172633;
+    --text: #e4ecf2;
+    --muted: #93a6b5;
+    --header-bg: #0a131b;
+    --header-text: #e4ecf2;
+    --btn: #24394b;
+    --btn-hover: #2e4a61;
+    --focus: #f2b134;
+    color-scheme: dark;
+  }
+}
+
+* { box-sizing: border-box; }
+
+html, body { height: 100%; }
+
+body {
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  line-height: 1.4;
+}
+
+h1 { margin: 0; font-weight: 600; }
+
+/* ---- Header ---- */
+
+.topbar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem 0.75rem;
+  padding: 0.4rem 16px;
+  background: var(--header-bg);
+  color: var(--header-text);
+}
+
+.topbar h1 { font-size: 1.2rem; letter-spacing: 0.02em; }
+
+.controls { display: flex; align-items: center; gap: 0.5rem; }
+
+/* ---- Buttons ---- */
+
+button {
+  font: inherit;
+  padding: 0.3rem 0.8rem;
+  border: 0;
+  border-radius: 4px;
+  background: var(--btn);
+  color: var(--text);
+  cursor: pointer;
+}
+
+button:hover { background: var(--btn-hover); }
+button:focus-visible { outline: 3px solid var(--focus); outline-offset: 2px; }
+
+/* ---- Layout: the canvas takes all the height that is left ---- */
+
+main {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  min-height: 0;
+  padding: 0.4rem 16px;
+}
+
+.stage {
+  position: relative;
+  flex: 1;
+  min-height: 0;
+}
+
+/* js/ui.js sets its size and position in whole device pixels. */
+#game {
+  position: absolute;
+  display: block;
+  border-radius: 4px;
+  background: var(--maze-bg);
+}
+
+/* ---- Score line ---- */
+
+.scoreline {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0 1rem;
+  min-height: 1.75rem;
+  max-width: 100%;
+  margin: 0 auto 0.3rem;
+  color: var(--muted);
+  font-size: 0.95rem;
+}
+
+.scoreline b {
+  color: var(--text);
+  font-variant-numeric: tabular-nums;
+}
+
+.lives {
+  display: flex;
+  gap: 0.25rem;
+  min-width: 2.5rem;
+  min-height: 1rem;
+  justify-content: flex-end;
+}
+
+/* A flat Pac-Man, with the mouth cut out. */
+.life {
+  width: 1rem;
+  height: 1rem;
+  border-radius: 50%;
+  background: var(--pac);
+  clip-path: polygon(100% 18%, 50% 50%, 100% 82%, 100% 100%, 0 100%, 0 0, 100% 0);
+}
+
+/* ---- Status ---- */
+
+.status {
+  min-height: 1.4em;
+  margin: 0.3rem 0 0;
+  color: var(--muted);
+  font-size: 0.9rem;
+  text-align: center;
+}
